@@ -1,0 +1,23 @@
+version: '1'
+services:
+  auth-service:
+    container_name: auth-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - auth-service-network
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    environment:
+      NODE_OPTIONS: --max_old_space_size=4096
+    ports:
+      - '3002:3002'
+
+networks:
+  auth-service-network:
+    external: true
+
+volumes:
+  node_modules:
