@@ -46,11 +46,8 @@ export class AuthService {
   userService: ClientKafka;
 
   async onModuleInit() {
-    this.userService.subscribeToResponseOf(Pattern.GET_USERS);
-    this.userService.subscribeToResponseOf(Pattern.GET_MY_USER);
     this.userService.subscribeToResponseOf(Pattern.GET_USER);
-    this.userService.subscribeToResponseOf(Pattern.UPDATE_USER);
-    this.userService.subscribeToResponseOf(Pattern.UPDATE_USER);
+    this.userService.subscribeToResponseOf(Pattern.CREATE_USER);
 
     await this.userService.connect();
   }
